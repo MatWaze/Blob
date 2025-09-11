@@ -1,0 +1,3 @@
+[submodule "transcendence"]
+	path = transcendence
+	url = https://github.com/MatWaze/transcendence.git
