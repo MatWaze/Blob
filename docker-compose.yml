@@ -1,0 +1,34 @@
+services:
+  nginx:
+    image: nginx
+    build: ./Blob-Client
+    ports:
+      - "443:443"
+    networks:
+      - srv
+    restart: on-failure
+    depends_on:
+      - api
+      - pong
+
+  api:
+    image: blob-api
+    build: ./Blob-Api
+    networks:
+      - srv
+    expose:
+      - "4000"
+    restart: on-failure
+
+  pong:
+    image: blob-pong
+    build: ./Blob-Pong
+    networks:
+      - srv
+    expose:
+      - "3000"
+    restart: on-failure
+
+networks:
+  srv:
+    driver: bridge
