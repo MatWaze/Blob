@@ -1,3 +1,9 @@
-[submodule "transcendence"]
-	path = transcendence
-	url = https://github.com/MatWaze/transcendence.git
+[submodule "Blob-Api"]
+	path = Blob-Api
+	url = https://github.com/MatWaze/Blob-Api.git
+[submodule "Blob-Pong"]
+	path = Blob-Pong
+	url = https://github.com/Ezardy/Blob-Pong.git
+[submodule "Blob-Client"]
+	path = Blob-Client
+	url = https://github.com/MatWaze/Blob-Client.git
