@@ -7,3 +7,6 @@
 [submodule "Blob-Client"]
 	path = Blob-Client
 	url = https://github.com/MatWaze/Blob-Client.git
+[submodule "Blob-Werewolf"]
+	path = Blob-Werewolf
+	url = https://github.com/Ezardy/Blob-Werewolf.git

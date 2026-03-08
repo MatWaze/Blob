@@ -30,10 +30,41 @@ services:
     expose:
       - "3000"
     restart: on-failure
+  
+  werewolf-server:
+    image: werewolf-server
+    build:
+      context: ./Blob-Werewolf
+      dockerfile: Dockerfile.server
+    secrets:
+      - source: public_pem
+        target: /home/server/.config/unity3d/Blobox/Werewolf/public.pem
+    networks:
+      - srv
+    expose:
+      - "3044"
+    restart: on-failure
+
+  werewolf-client:
+    image: werewolf-client
+    build:
+      context: ./Blob-Werewolf
+      dockerfile: Dockerfile.web
+    networks:
+      - srv
+    expose:
+      - "3043"
+    depends_on:
+      - werewolf-server
+    restart: on-failure
 
 networks:
   srv:
     driver: bridge
+
+secrets:
+  public_pem:
+    file: C:/Users/Matevos/Documents/public.pem
 
 volumes:
   db-data:
