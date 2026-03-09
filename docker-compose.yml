@@ -16,6 +16,11 @@ services:
     build: ./Blob-Api
     volumes:
       - db-data:/opt/blob-api/api/prisma
+    secrets:
+      - source: public_pem
+        target: /opt/blob-api/api/public.pem
+      - source: private_pem
+        target: /opt/blob-api/api/private.pem
     networks:
       - srv
     expose:
@@ -65,6 +70,8 @@ networks:
 secrets:
   public_pem:
     file: C:/Users/Matevos/Documents/public.pem
+  private_pem:
+    file: C:/Users/Matevos/Documents/private.pem
 
 volumes:
   db-data:
