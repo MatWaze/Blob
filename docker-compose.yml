@@ -4,6 +4,7 @@ services:
     build: ./Blob-Client
     ports:
       - "443:443"
+      - "3044:3044"
     networks:
       - srv
     restart: on-failure
