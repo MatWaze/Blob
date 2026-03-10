@@ -1,9 +1,9 @@
 # bloBox
 
-Blob-API starts the server that proccesses incoming requests from Blob-Client and games (Blob-Pong, Blob-Werewolf), handles authentication, updates the database, etc.
+Blob-API starts the server that processes incoming requests from Blob-Client and games (Blob-Pong, Blob-Werewolf), handles authentication, updates the database, etc.
 
 ## Main Features Overview
-Blob-API provides bloBox with NFT creation capability, BLOB token withdrawal, and handling of the deposit.
+Blob-API provides bloBox with NFT creation capability, Blob token withdrawal, and handling of the deposit.
 
 Three contracts are created for those purposes:
 * Blob - an ERC20 token of bloBox
@@ -15,7 +15,7 @@ Three contracts are created for those purposes:
 all of which are deployed on the C-Chain (for now on Fuji).
 
 #
-In Blob-Client inside the Wallet section users can set their wallet address and withdraw a specific amount of BLOBs that they have in their withdrawable balance (withdrawable meaning that only BLOBs awarded by playing games can be withdrawn).
+In Blob-Client inside the Wallet section users can set their wallet address and withdraw a specific amount of blobs that they have in their withdrawable balance (withdrawable meaning that only blobs awarded by playing games can be withdrawn).
 
 After doing so, Blob-Client calls the endpoint
 
@@ -29,12 +29,12 @@ which will call the
 function requestWithdrawal(address userAddress, uint256 totalAmount) external onlyOwner
 </code>
 
-of the BlobManager, thereby transfering BLOBs to the user's wallet. Blob-API updates the balance if that operation succeeds.
+of the BlobManager, thereby transferring blobs to the user's wallet. Blob-API updates the balance if that operation succeeds.
 
 Withdrawal was tested by performing 20+ withdrawals to different accounts at the same time, all of which succeeded. If an error were to occur, the error handling will retry the operations thanks to the correct nonce and gas management.
 
 #
-In the Draw Yourself section of the client users can create their own NFT-skin by owning a specific key. Those keys will be rewared to users on different occasions like "First Werewolf Win", "50 Wins", etc. To create a skin, users have to provide name and description, choose a 3D model from the list of available models associated with the key, and choose the texture which will be applied on the model.
+In the Draw Yourself section of the client users can create their own NFT-skin by owning a specific key. Those keys will be rewarded to users on different occasions like "First Werewolf Win", "50 Wins", etc. To create a skin, users have to provide name and description, choose a 3D model from the list of available models associated with the key, and choose the texture which will be applied on the model.
 
 After submission, client makes request 
 
@@ -96,7 +96,7 @@ which makes request to Glacier API, and before returning the NFT checks if it st
 
 #
 
-Depositing works thanks to the webhook created in AvaCloud. Whenever a user transfers BLOBs from their wallet (either from Core, Metamask, etc.), this webhook makes request to Blob-API
+Depositing works thanks to the webhook created in AvaCloud. Whenever a user transfers blobs from their wallet (either from Core, Metamask, etc.), this webhook makes request to Blob-API
 
 <code>
 POST /api/blockchain/webhooks/transfer
