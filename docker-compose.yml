@@ -3,8 +3,10 @@ services:
     image: nginx
     build: ./Blob-Client
     ports:
+      - "80:80"
       - "443:443"
-      - "3044:3044"
+    volumes:
+      - /root/letsencrypt:/etc/letsencrypt
     networks:
       - srv
     restart: on-failure
@@ -15,8 +17,6 @@ services:
   api:
     image: blob-api
     build: ./Blob-Api
-    volumes:
-      - db-data:/opt/blob-api/api/prisma
     secrets:
       - source: public_pem
         target: /opt/blob-api/api/public.pem
@@ -70,9 +70,6 @@ networks:
 
 secrets:
   public_pem:
-    file: C:/Users/Matevos/Documents/public.pem
+    file: /root/Blob/public.pem
   private_pem:
-    file: C:/Users/Matevos/Documents/private.pem
-
-volumes:
-  db-data:
+    file: /root/Blob/private.pem
